@@ -4,37 +4,58 @@
     <meta charset="UTF-8">
     <title>Calculate GPA</title>
 </head>
-<body>
+
+<body style="background-color:#fd85af">
 <!--عنوان رئيسي من 1 الى 6 وكل ما كان الرقم اصغر كان الخط اكبر -->
 <h1>Calculate the GPA </h1>
-<div id="container">
- <button id="add-button" >Add entry</button>
-    <button id="delete-button">delete course</button>
-    <table>
-        <caption>the GPA of : </caption>
-        <tr>
-            <td> <button> 4</button> </td>
-            <td><button>5</button></td>
-        </tr>
-    </table>
+
+<table>
+    <caption>the GPA of : </caption>
+    <tr >
+        <td> <button style="background-color:ghostwhite"> 4</button> </td>
+        <td><button style="background-color:ghostwhite">5</button></td>
+    </tr>
+</table>
+
+<form method="post">
+    <label for="last-points-gpa">the points gpa</label>
+<input id="last-points-gpa" placeholder="last points gpa"style="width:100px;background-color:floralwhite" type="number" min="0.0"/>
+<label for="last-gpa">the last gpa</label>
+    <input id="last-gpa" placeholder="last gpa" style="width:100px; background-color:floralwhite;" type="number" min="0.0"/>
+<label for="hours-number">the last number of hours</label>
+    <input id="hours-number" placeholder="number of hours" style="width:100px; background-color:floralwhite"type="number" min="1" required/>
+</form>
+
+<div id="container" >
+ <button id="add-button" style="background-color:ghostwhite; width:100px" >Add entry</button>
+<form method="post">
+    <input id="course_name"  placeholder="Course Name" style="width:100px; background-color:floralwhite" type="text"/>
+    <input id="credit hours"  placeholder="Credit Hours" style="width:100px; background-color:floralwhite" type="number" min="1" required/>
+<!--    الفاليو والنيم مالها اي فايده الا يوم نجي ونربط الباك اند مع الفرونت اند-->
+    <select name="select grade" id="select-grade" style="height:18px">
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B+">B+</option>
+        <option value="B">B</option>
+        <option value="C+">C+</option>
+        <option value="C">C</option>
+        <option value="D+">D+</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+    </select>
+    <output name="the points number" id="the-points-number" placeholder="points number"style="width:100px; background-color:floralwhite"type="number"/>
+    <input type="checkbox" style="width:18px; height:18px; "/>
+</form>
 </div>
-
-<div id="input-container">
-    <input id="course_name" class="form-control"
-           placeholder="Course Name" style="width:200px; margin-right:10px">
-
-    <input id="credit hours" class="from-control"
-           placeholder="Credit Hours" style="width:200px;margin-right:10px;">
-<input id="the ngad number" placeholder="ngad number"/>
-    <input id="grade_earned" class="form-control"
-           placeholder="Grade Earned" style="width:200px;margin-right:10px;">
 
 <div>
-    the GPA:
-    <output/>
+<!--    error not show output-->
+    <form>
+    <label for="all-semster">GPA of all semster:</label>
+        <output name="all-semster" id="all-semster" style="background-color:floralwhite; width:100px"></output>
+    <label for="semster">GPA of the semster:</label>
+        <output name="semster" id="semster" style="width:100px; background-color:floralwhite" ></output>
+    </form>
 </div>
-</div>
-
-
 </body>
 </html>
