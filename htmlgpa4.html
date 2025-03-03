@@ -7,21 +7,30 @@
     <style>
         form{
             border:solid 1px deeppink;
+            padding:10px;
+            margin:2px;
+        }
+        table{
+           padding :10px;
+            margin:10px;
+            width:200px;
+            text-aglin:center;
+            font-size:20px;
         }
     </style>
 <body style="background-color:#fd85af">
 <!--عنوان رئيسي من 1 الى 6 وكل ما كان الرقم اصغر كان الخط اكبر -->
 <h1>Calculate the GPA </h1>
 
-<table>
-    <caption>the GPA of : </caption>
+<table  >
+    <caption >the GPA of : </caption>
     <tr >
         <td> <button style="background-color:ghostwhite"> 4</button> </td>
         <td><button style="background-color:ghostwhite">5</button></td>
     </tr>
 </table>
 
-<form method="post">
+<form method="post" >
     <label for="last-points-gpa">the points gpa</label>
 <input id="last-points-gpa" placeholder="last points gpa"style="width:100px;background-color:floralwhite" type="number" min="0.0"/>
 <label for="last-gpa">the last gpa</label>
@@ -31,7 +40,7 @@
 </form>
 
 <div id="container" >
- <button id="add-button" style="background-color:ghostwhite; width:100px" >Add entry</button>
+ <button id="add-button" style="background-color:ghostwhite; width:100px; margin:5px" >Add entry</button>
 <form method="post">
     <input id="course_name"  placeholder="Course Name" style="width:100px; background-color:floralwhite" type="text"/>
     <input id="credit hours"  placeholder="Credit Hours" style="width:100px; background-color:floralwhite" type="number" min="1" required/>
@@ -53,7 +62,7 @@
 </div>
 
 <!--    error not show output-->
-    <form>
+    <form >
     <label for="all-semster">GPA of all semster:</label>
         <output name="all-semster" id="all-semster" style="background-color:floralwhite; width:100px"></output>
     <label for="semster">GPA of the semster:</label>
