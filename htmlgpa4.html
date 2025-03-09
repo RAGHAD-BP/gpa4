@@ -17,6 +17,12 @@
             text-aglin:center;
             font-size:20px;
         }
+        input{
+            min-height:10%;
+            max-height:15%;
+            max-width:18%;
+            border-radius: 7px;
+        }
     </style>
 <body style="background-color:#fd85af">
 <!--عنوان رئيسي من 1 الى 6 وكل ما كان الرقم اصغر كان الخط اكبر -->
@@ -32,18 +38,18 @@
 
 <form method="post" >
     <label for="last-points-gpa">the points gpa</label>
-<input id="last-points-gpa" placeholder="last points gpa"style="width:100px;background-color:floralwhite" type="number" min="0.0"/>
+<input id="last-points-gpa" placeholder="last points gpa"style="background-color:floralwhite" type="number" min="0.0"/>
 <label for="last-gpa">the last gpa</label>
-    <input id="last-gpa" placeholder="last gpa" style="width:100px; background-color:floralwhite;" type="number" min="0.0"/>
+    <input id="last-gpa" placeholder="last gpa" style=" background-color:floralwhite;" type="number" min="0.0"/>
 <label for="hours-number">the last number of hours</label>
-    <input id="hours-number" placeholder="number of hours" style="width:100px; background-color:floralwhite"type="number" min="1" required/>
+    <input id="hours-number" placeholder="number of hours" style=" background-color:floralwhite"type="number" min="1" required/>
 </form>
 
 <div id="container" >
  <button id="add-button" style="background-color:ghostwhite; width:100px; margin:5px" >Add entry</button>
 <form method="post">
-    <input id="course_name"  placeholder="Course Name" style="width:100px; background-color:floralwhite" type="text"/>
-    <input id="credit hours"  placeholder="Credit Hours" style="width:100px; background-color:floralwhite" type="number" min="1" required/>
+    <input id="course_name"  placeholder="Course Name" style=" background-color:floralwhite" type="text"/>
+    <input id="credit hours"  placeholder="Credit Hours" style=" background-color:floralwhite" type="number" min="1" required/>
 <!--    الفاليو والنيم مالها اي فايده الا يوم نجي ونربط الباك اند مع الفرونت اند-->
     <select name="select grade" id="select-grade" style="height:18px">
         <option value="A+">A+</option>
@@ -57,7 +63,7 @@
         <option value="F">F</option>
     </select>
     <output name="the points number" id="the-points-number" placeholder="points number"style="width:100px; background-color:floralwhite"type="number"/>
-    <input type="checkbox" style="width:18px; height:18px; "/>
+    <input type="checkbox" />
 </form>
 </div>
 
