@@ -4,7 +4,9 @@ form{
     margin:2px;
     display :flex;
     justify-content:space-evenly;
+    ;
 }
+
 table ,td,tr{
     padding :11px;
     margin:10px;
@@ -13,8 +15,10 @@ table ,td,tr{
     font-size:20px;
 }
 input{
-    min-height:10%;
-    max-height:15%;
+    min-height:1vw;
+    max-height:5vw;
     max-width:18%;
     border-radius: 7px;
+    /*اللون توزع الظل ابعاده عامودي ابعاده افقي */
+    box-shadow: 2px 2px 9px pink;
 }
