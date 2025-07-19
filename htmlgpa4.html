@@ -13,71 +13,65 @@
     <caption >the GPA of : </caption>
     <tr >
         <td > <input style="width:60px; height:60px; box-shadow: none" name="gpatype" type="radio" id="gpafrom4" value="4" aria-labelledby="4gpa"/>
-       <label id="4gpa" for="gpafrom4"></label>4 </td>
+            <label id="4gpa"  for="gpafrom4"></label>4</td>
         <td > <input style="width:60px; height:60px; box-shadow:none" name="gpatype" type="radio" id="gpafrom5" value="5" aria-labelledby="5gpa"/>
-            <label id="5gpa"  for="gpafrom5"></label> 5</td>
+            <label id="5gpa" for="gpafrom5"></label>5</td>
     </tr>
 </table>
 
 <div id="container" >
-<form method="post" >
-    <label for="last-points-gpa">the points gpa</label>
-<input id="last-points-gpa" placeholder="last points gpa" style="background-color:floralwhite" type="text"required />
-<label for="last-gpa">the last gpa</label>
-    <input id="last-gpa" placeholder="last gpa" style=" background-color:floralwhite;" type="text" required />
-<label for="hours-number">the last number of hours</label>
-    <input id="hours-number" placeholder="number of hours" style=" background-color:floralwhite" type="number" min="1" required/>
-<button id="submit"  style="height:30px">submit</button>
-</form>
-    <label id="addcourse" >
-    <form method="post">
-    <input id="course_name"  placeholder="Course Name" style=" background-color:floralwhite" type="text"/>
-    <input id="credit hours"  placeholder="Credit Hours" style=" background-color:floralwhite" type="number" min="1" required/>
-<!--    الفاليو والنيم مالها اي فايده الا يوم نجي ونربط الباك اند مع الفرونت اند-->
-    <select name="select grade" id="select-grade" style="height:18px">
-        <option value="A+">A+</option>
-        <option value="A">A</option>
-        <option value="B+">B+</option>
-        <option value="B">B</option>
-        <option value="C+">C+</option>
-        <option value="C">C</option>
-        <option value="D+">D+</option>
-        <option value="D">D</option>
-        <option value="F">F</option>
-    </select>
-    <output name="the points number" id="the-points-number" placeholder="points number"style="width:100px; background-color:floralwhite"type="number"/>
-    <input type="checkbox"  />
-</form>
-    </label>
+    <form method="post" >
+        <label for="last-points-gpa">the points gpa</label>
+        <input id="last-points-gpa" placeholder="last points gpa" style="background-color:floralwhite" type="text" required />
+        <label for="hours-number">the last number of hours</label>
+        <input id="hours-number" placeholder="number of hours" style=" background-color:floralwhite" type="number" min="0" required/>
+    </form>
+        <form id="coursinfo">
+            <label for="course_name"></label>
+            <input id="course_name"  placeholder="Course Name" style=" background-color:floralwhite" type="text"/>
+            <label for="credithours"></label>
+            <input id="credithours"  placeholder="Credit Hours" style=" background-color:floralwhite" type="number" min="1" required/>
+            <!--    الفاليو والنيم مالها اي فايده الا يوم نجي ونربط الباك اند مع الفرونت اند-->
+            <label for="select-grade"></label>
+            <select name="select grade" id="select-grade" style="height:18px">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+            </select>
+            <label for="ccheck"></label>
+            <input id="ccheck" type="checkbox"  />
+            <label for="the-points-number">the points of course :</label>
+            <output name="the points number" id="the-points-number" style="width:50px; background-color:floralwhite" ></output>
+        </form>
 </div>
 <button id="add-button" onclick="addC()" style="background-color:ghostwhite; width:100px; margin:5px" >Add course</button>
-<button id ="showtheGPA " onclick="semstergpa()&&allgpa()" style="background-color:ghostwhite; width:120px; margin:5px"> show the GPA</button>
+<button id ="showtheGPA " onclick="calgpa()" style="background-color:ghostwhite; width:120px; margin:5px"> show the GPA</button>
 <!--    error not show output-->
-    <form >
+<form >
     <label for="all-semster">GPA of all semster:</label>
-        <output name="all-semster" id="all-semster" style="background-color:floralwhite; width:100px"></output>
+    <output name="all-semster" id="all-semster" style="background-color:floralwhite; width:100px"></output>
     <label for="semster">GPA of the semster:</label>
-        <output name="semster" id="semster" style="width:100px; background-color:floralwhite" ></output>
-    </form>
-    </form>
+    <output name="semster" id="semster" style="width:100px; background-color:floralwhite" ></output>
+</form>
 </body>
-    <script>
-const gpa=parseInt(document.getElementsByName("gpatype").values());
-const lastpoints=parseFloat(document.getElementById("last-points-gpa").value);
-const lastpoints=parseFloat(document.getElementById("last-gpa").value);
-const lasthours=parseInt(document.getElementById("hours-number").value);
-//////
-const semstergpa=0;
-const allgpa=0;
+<script>
+    function numberofpoints(){
 
-function addC(){
- const container =document.getElementById("container");
- const fromDiv=document.createElement("div");
- fromDiv.innerHTML= `
+    }
+    function addC(){
+        const container =document.getElementById("container");
+        const fromDiv=document.createElement("div");
+        fromDiv.innerHTML= `
     <label id="addcourse" >
     <form method="post">
     <input id="course_name"  placeholder="Course Name" style=" background-color:floralwhite" type="text"/>
-    <input id="credit hours"  placeholder="Credit Hours" style=" background-color:floralwhite" type="number" min="1" required/>
+    <input id="credit hours"  placeholder="Credit Hours" style=" background-color:floralwhite" type="number" min="0" required/>
 <!--    الفاليو والنيم مالها اي فايده الا يوم نجي ونربط الباك اند مع الفرونت اند-->
     <select name="select grade" id="select-grade" style="height:18px">
         <option value="A+">A+</option>
@@ -90,13 +84,16 @@ function addC(){
         <option value="D">D</option>
         <option value="F">F</option>
     </select>
-    <output name="the points number" id="the-points-number" placeholder="points number"style="width:100px; background-color:floralwhite"type="number"/>
     <input type="checkbox"  />
+    <label for="the-points-number" >the points of course :</label>
+    <output name="the points number" id="the-points-number" style="width:50px; background-color:floralwhite"/>
 </form>
     </label> `;
-    container.appendChild(fromDiv);
-}
-    function semstergpa(){}
-    function allgpa(){}
-    </script>
+        container.appendChild(fromDiv);
+    }
+
+   function calgpa(){
+
+   }
+</script>
 </html>
