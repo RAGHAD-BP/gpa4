@@ -61,39 +61,158 @@
 </form>
 </body>
 <script>
-    function numberofpoints(){
 
+    function numberofpoints() {
+        const gpaScale = document.querySelector('input[name="gpatype"]:checked');
+        if (!gpaScale) {
+            alert('Please select GPA scale (4 or 5)');
+            return 0;
+        }
+        const scale = parseInt(gpaScale.value);
+        const courseForms = document.querySelectorAll('[id="coursinfo"]');
+        courseForms.forEach(form => {
+            const gradeSelect = form.querySelector('#select-grade');
+            const pointsOutput = form.querySelector('#the-points-number');
+            const checkbox = form.querySelector('#ccheck');
+
+            //i don't understind this if
+            if (gradeSelect && pointsOutput) {
+                const grade = gradeSelect.value;
+                let points = 0;
+
+                if (scale === 4) {
+                    switch(grade) {
+                        case 'A+': points = 4.0; break;
+                        case 'A': points = 3.75; break;
+                        case 'B+': points = 3.5; break;
+                        case 'B': points = 3.0; break;
+                        case 'C+': points = 2.5; break;
+                        case 'C': points = 2.0; break;
+                        case 'D+': points = 1.5; break;
+                        case 'D': points = 1.0; break;
+                        case 'F': points = 0.0; break;
+                        default: points = 0.0;
+                    }
+                } else if (scale === 5) {
+                    switch (grade) {
+                        case 'A+': points = 5.0; break;
+                        case 'A': points = 4.75; break;
+                        case 'B+': points = 4.5; break;
+                        case 'B': points = 4.0; break;
+                        case 'C+': points = 3.5; break;
+                        case 'C': points = 3.0; break;
+                        case 'D+': points = 2.5; break;
+                        case 'D': points = 2.0; break;
+                        case 'F': points = 0.0; break;
+                        default: points = 0.0;
+                        }
+                }
+                //i think it's wrong i want when it's not checked the points being 0
+                if (checkbox && !checkbox.checked) {
+                    points = 0;
+                }
+                pointsOutput.value = points.toFixed(2);
+            }
+        });
     }
     function addC(){
         const container =document.getElementById("container");
         const fromDiv=document.createElement("div");
+        const uniqueId=Date.now();
         fromDiv.innerHTML= `
-    <label id="addcourse" >
-    <form method="post">
-    <input id="course_name"  placeholder="Course Name" style=" background-color:floralwhite" type="text"/>
-    <input id="credit hours"  placeholder="Credit Hours" style=" background-color:floralwhite" type="number" min="0" required/>
-<!--    الفاليو والنيم مالها اي فايده الا يوم نجي ونربط الباك اند مع الفرونت اند-->
-    <select name="select grade" id="select-grade" style="height:18px">
-        <option value="A+">A+</option>
-        <option value="A">A</option>
-        <option value="B+">B+</option>
-        <option value="B">B</option>
-        <option value="C+">C+</option>
-        <option value="C">C</option>
-        <option value="D+">D+</option>
-        <option value="D">D</option>
-        <option value="F">F</option>
-    </select>
-    <input type="checkbox"  />
-    <label for="the-points-number" >the points of course :</label>
-    <output name="the points number" id="the-points-number" style="width:50px; background-color:floralwhite"/>
-</form>
-    </label> `;
+   <form id="coursinfo">
+            <label for="course_name_${uniqueId}"></label>
+            <input id="course_name_${uniqueId}"  placeholder="Course Name" style=" background-color:floralwhite" type="text"/>
+            <label for="credithours_${uniqueId}"></label>
+            <input id="credithours_${uniqueId}"  placeholder="Credit Hours" style=" background-color:floralwhite" type="number" min="1" required/>
+            <!--    الفاليو والنيم مالها اي فايده الا يوم نجي ونربط الباك اند مع الفرونت اند-->
+            <label for="select-grade_${uniqueId}"></label>
+            <select name="select grade" id="select-grade_${uniqueId}" style="height:18px">
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D+">D+</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+            </select>
+            <label for="ccheck_${uniqueId}"></label>
+            <input id="ccheck_${uniqueId}" type="checkbox"  />
+            <label for="the-points-number_${uniqueId}">the points of course :</label>
+            <output name="the points number" id="the-points-number_${uniqueId}" style="width:50px; background-color:floralwhite" ></output>
+        </form>`;
         container.appendChild(fromDiv);
+
+        //eventlistener to the new select element
+        const newSelect=fromDiv.querySelector('#select-grade_${uniqueId}');
+        if(newSelect){
+            newSelect.addEventListener('change',numberofpoints);
+        }
+        const newCheckbox = fromDiv.querySelector(`#ccheck_${uniqueId}`);
+        if(newCheckbox){
+            newCheckbox.addEventListener('change', numberofpoints);
+        }
     }
 
    function calgpa(){
+ numberofpoints();
+ const lastPointsGpa=parseFloat(document.getElementById('last-points-gpa').value)||0;
+ const lastHours=parseInt(document.getElementById('hours-number').value)||0;
 
+ const courseForms=document.querySelectorAll('[id="coursinfo"]');
+
+       let totalQualityPoints = 0;
+       let totalCreditHours = 0;
+       let semesterQualityPoints = 0;
+       let semesterCreditHours = 0;
+
+       courseForms.forEach(
+           form =>{
+               const creditHoursInput=form.querySelector('#credithours');
+               const pointsOutput = form.querySelector('#the-points-number');
+               const checkbox = form.querySelector('#ccheck');
+
+               if(creditHoursInput&&pointsOutput){
+                   const creditHours=parseInt(creditHoursInput.value)||0;
+                   const points =parseFloat(pointsOutput.value)||0;
+
+                   if(checkbox && checkbox.checked){
+                       const qualityPoints = creditHours*points;
+                       semesterQualityPoints +=qualityPoints;
+                       semesterCreditHours +=creditHours;
+                   }
+               }
+           }
+       );
+       //calculate semster GPA
+       const semsterGPA =semesterCreditHours>0?
+           (semesterQualityPoints/semesterCreditHours):0;
+
+       const previouseQualityPoints=lastPointsGpa*lastHours;
+       totalQualityPoints=previouseQualityPoints+semesterQualityPoints;
+       totalCreditHours=lastHours+semesterCreditHours;
+
+       const cumulativeGPA=totalCreditHours>0?
+           (totalQualityPoints/totalCreditHours):0;
+
+       document.getElementById('semster').value=semsterGPA.toFixed(2);
+       document.getElementById('all-semster').value=cumulativeGPA.toFixed(2);
+
+       //i skip alert line
    }
+   //eventlistener to update points when grade changes
+    document.addEventListener('DOMContentLoaded',function(){
+        const initialSelect=document.querySelector('#select-grade');
+        if(initialSelect){
+            initialSelect.addEventListener('change',numberofpoints);
+        }
+        //eventlistener to radio buttons
+        const radioButtons=document.querySelectorAll('input[name="gpatype"]');
+        radioButtons.forEach(radio=>{
+            radio.addEventListener('change',numberofpoints);
+        })
+    })
 </script>
 </html>
