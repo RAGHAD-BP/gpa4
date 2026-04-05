@@ -1,12 +1,12 @@
 body{
-    background-color: #216869;
+    background-color: #003132;
     color:white;
     display:flex;
     justify-content: center;
     text-align:center;
 }
 button{
-    background-color: #49a078;
+    background-color: #287c55;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -23,28 +23,27 @@ input{
     border-radius:10px;
 }
 #courseList{
-    background-color:#49a078;
+    background-color:#287c55;
     border-color:#dce1de;
     border-width:2px;
     border-style:solid;
     padding:10px;
     margin-bottom:15px;
-    border-radius:10px;
+    border-radius:1px;
     box-shadow: gainsboro 0px 2px 2px;
 }
 #coursename{
     font-size:20px;
     font-weight:bold;
 }
+span{
+    font-size:18px;
+    display:flex; 
+    align-items:center;
+    padding-top:10px; 
+    padding-bottom:10px;
+    gap:8px;
+}
 @media (max-width:500px){
 
 }
-
-/* - Extended Array
-{
-    CarbonBlack:"#1f2421",
-    Stormy Teal: "#216869",
-    Seaweed:"#49a078",
-    MutedTea:"#9cc5a1",
-    AlabasterGrey:"#dce1de"
-} */

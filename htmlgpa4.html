@@ -14,12 +14,23 @@
         <br><br>
  
         <label for="grade1">Course grade:</label>
-        <input type="text" id="grade1" name="grade1"><br><br>
+        <select id="grade1" name="grade1" oninput="CalculatePointsCouse()">
+            <option value="4">A+</option>
+            <option value="3.75">A</option>
+            <option value="3.50">B+</option>
+            <option value="3">B</option>
+            <option value="2.50">C+</option>
+            <option value="2">C</option>
+            <option value="1.50">D+</option>
+            <option value="1">D</option>
+            <option value="0">F</option>
+        </select>
+        <br><br>
 
         <label for="hours1">Course hours:</label>
-        <input type="text" id="hours1" name="hours1"><br><br>
+        <input type="number" id="hours1" name="hours1" oninput="CalculatePointsCouse()"><br><br>
 
-        <span id="point">Points: 0</span><br><br>
+        <span id="point1">Points: 0</span><br><br>
 
         </div>
         </div>
@@ -27,12 +38,12 @@
         <button id="addCourse" onClick="AddCourse()">Add Course</button>
 
         <br><br>
-        <span id="gpaS" >GPA of the semester:</span>
-        <span id="gpaAll">GPA of all semesters:</span>
+        <span >GPA of the semester:<space><span id="gpaS"></span></span>
+        <span id="gpaAll">GPA of all semesters:<span id="gpaA"></span></span>
         
         <br><br>
 
-        <button id="Cgpa" onClick="CalculateGPA">Calculate GPA</button>
+        <button id="Cgpa" onClick="CalculateSGPA()">Calculate GPA</button>
 
         <p id="result"></p>
     </div>

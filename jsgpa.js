@@ -2,41 +2,9 @@ let Courses = document.querySelectorAll("#courseList input")
 
 let courseNum=1;
 let CoursePoint=0;
+let CourseHours=0;
 let totalPoints=0;
 let totalHours=0;
-
-function GradetoPoint(grade){
-    switch(grade){
-        case "A+":
-            CoursePoint=4;
-            break;
-        case "A":
-            CoursePoint=3.75;
-            break;
-        case "B+":
-            CoursePoint=3.50;
-            break;
-        case "B":
-            CoursePoint=3.00;
-            break;
-        case "C+":
-            CoursePoint=2.50;
-            break;
-        case "C":
-            CoursePoint=2.00;
-            break;
-        case "D+":
-            CoursePoint=1.50;
-            break;
-        case "D":
-            CoursePoint=1.00;
-            break;
-        case "F":
-            CoursePoint=0;
-            break;
-    }
-    return CoursePoint;
-}
 
 function AddCourse(){
     courseNum++;
@@ -45,10 +13,46 @@ function AddCourse(){
         <label for="course${courseNum}">Course ${courseNum}:</label>
         <br><br>
         <label for="grade${courseNum}">Course grade:</label>
-        <input type="text" id="grade${courseNum}" name="grade${courseNum}"><br><br>
+        <select id="grade${courseNum}" name="grade${courseNum}" oninput="CalculatePointsCouse()">
+            <option value="4">A+</option>
+            <option value="3.75">A</option>
+            <option value="3.50">B+</option>
+            <option value="3">B</option>
+            <option value="2.50">C+</option>
+            <option value="2">C</option>
+            <option value="1.50">D+</option>
+            <option value="1">D</option>
+            <option value="0">F</option>
+        </select>
+        <br><br>
         <label for="hours${courseNum}">Course hours:</label>
-        <input type="text" id="hours${courseNum}" name="hours${courseNum}"><br><br>
-        <span id="point">Points: ${CoursePoint}</span><br><br>
+        <input type="number" id="hours${courseNum}" name="hours${courseNum}" oninput="CalculatePointsCouse()"><br><br>
+        <span id="point${courseNum}">Points: ${CoursePoint}</span><br><br>
     `;
     document.getElementById('courseList').appendChild(course);
+}
+
+function CalculatePointsCouse(CourseHours, CoursePoint, totalPoints, totalHours){
+    for(let i=1; i<=courseNum; i++){
+        let grade = parseFloat(document.getElementById(`grade${i}`).value);
+        let hours = parseFloat(document.getElementById(`hours${i}`).value);
+        CourseHours = hours;
+        CoursePoint = grade * CourseHours;
+        totalPoints += CoursePoint;
+        totalHours += CourseHours;
+        document.getElementById(`point${i}`).innerHTML = `Points: ${CoursePoint}`;
+        }
+    return {totalHours, totalPoints}
+}
+
+function CalculateSGPA(){
+    let results= CalculatePointsCouse(CourseHours,CoursePoint,totalPoints, totalHours);
+    totalHoursT=results.totalHours;
+    totalPointsT=results.totalPoints;
+    let SemesterG= totalPointsT/totalHoursT;
+    if(totalHoursT===0){
+        document.getElementById('gpaS').innerHTML = `0.00`;
+    }else{
+        document.getElementById('gpaS').innerHTML = `${SemesterG.toFixed(2)}`;
+    }
 }
