@@ -10,7 +10,7 @@ function AddCourse(){
     courseNum++;
     let course = document.createElement('div');
     course.innerHTML = `
-        <label for="course${courseNum}">Course ${courseNum}:</label>
+        <label for="course${courseNum}" id="coursename">Course ${courseNum}:</label>
         <br><br>
         <label for="grade${courseNum}">Course grade:</label>
         <select id="grade${courseNum}" name="grade${courseNum}" oninput="CalculatePointsCouse()">
@@ -30,6 +30,15 @@ function AddCourse(){
         <span id="point${courseNum}">Points: ${CoursePoint}</span><br><br>
     `;
     document.getElementById('courseList').appendChild(course);
+}
+
+function RemoveCourse(){
+    if(courseNum>1){
+        document.getElementById('courseList').removeChild(document.getElementById('courseList').lastChild);
+        courseNum--;
+    } else{
+        alert("You can't remove any more courses.");
+    }
 }
 
 function CalculatePointsCouse(CourseHours, CoursePoint, totalPoints, totalHours){
