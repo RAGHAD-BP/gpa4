@@ -10,6 +10,8 @@ function AddCourse(){
     courseNum++;
     let course = document.createElement('div');
     course.innerHTML = `
+        <div id="courseList">
+        <div id="courseList<${courseNum}>"">
         <label for="course${courseNum}" id="coursename">Course ${courseNum}:</label>
         <br><br>
         <label for="grade${courseNum}">Course grade:</label>
@@ -28,18 +30,21 @@ function AddCourse(){
         <label for="hours${courseNum}">Course hours:</label>
         <input type="number" id="hours${courseNum}" name="hours${courseNum}" oninput="CalculatePointsCouse()"><br><br>
         <span id="point${courseNum}">Points: ${CoursePoint}</span><br><br>
+        </div>
     `;
-    document.getElementById('courseList').appendChild(course);
+    document.getElementById('box').appendChild(course);
 }
 
 function RemoveCourse(){
-    if(courseNum>1){
-        document.getElementById('courseList').removeChild(document.getElementById('courseList').lastChild);
+    if(courseNum > 1){
+        let box = document.getElementById('box');
+        box.removeChild(box.lastElementChild);
         courseNum--;
-    } else{
+    } else {
         alert("You can't remove any more courses.");
     }
 }
+
 
 function CalculatePointsCouse(CourseHours, CoursePoint, totalPoints, totalHours){
     for(let i=1; i<=courseNum; i++){
